@@ -4,11 +4,7 @@ with customers as (
 ), 
 
 orders as (
-    select * from {{ ref('stg_orders')}}
-),
-
-payments as (
-    select * from {{ ref('stg_payments') }}
+    select * from {{ ref('fct_orders')}}
 ),
 
 
@@ -20,11 +16,9 @@ customer_orders as (
         min(order_date) as first_order_date,
         max(order_date) as most_recent_order_date,
         count(order_id) as number_of_orders,
-        sum(payments.amount) as lifetime_value
+        sum(amount) as lifetime_value
 
     from orders 
-    left join payments using (order_id)
-
 
     group by 1
 
