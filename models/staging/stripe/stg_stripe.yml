@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: Staged payments table to handle transformations for application payments entries
+    columns:
+      - name: id
+        description: Primary key column for stg_payments (one payment per row)
+        tests:
+          - unique
+          - not_null
+      - name: paymentmethod
+        description: '{{ doc("paymentmethod")}}'
+        tests:
+            - accepted_values:
+                values:
+                  - coupon
+                  - credit_card
+                  - bank_transfer
+                  - gift_card 

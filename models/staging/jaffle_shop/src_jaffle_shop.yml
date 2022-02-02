@@ -7,20 +7,20 @@ sources:
     schema: jaffle_shop
     tables:
       - name: customers
-        description: Raw customers data.
+        description: Raw customers data from application database
         columns:
           - name: id
-            description: Primary key column for all customers in the table
+            description: Primary key column for all customers in the customers table
             tests:
               - unique
               - not_null
 
 
       - name: orders
-        description: Raw orders data.
+        description: Raw orders data from application database
         columns:
           - name: id
-            description: Primary key column for all orders in the orders
+            description: Primary key column for all orders in the orders table
             loaded_at_field: _etl_loaded_at
             freshness:
               warn_after: {count: 12, period: hour}
