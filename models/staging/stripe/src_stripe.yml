@@ -8,7 +8,7 @@ sources:
     tables:
       - name: payments
         description: Raw payments information from application database
-        loaded_at_field: _etl_loaded_at
+        loaded_at_field: created
         columns:
             - name: id
               description: Primary key column for all payments in the table 
